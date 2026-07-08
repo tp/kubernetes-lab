@@ -46,7 +46,12 @@ spec:
           periodSeconds: 10 # 
         resources:
           limits:
+            # CPU left deliberately open, supporting bursts
             memory: "64Mi"
           requests:
             cpu: "50m"
             memory: "32Mi"
+        lifecycle:
+          preStop:
+            sleep:
+              seconds: 5
