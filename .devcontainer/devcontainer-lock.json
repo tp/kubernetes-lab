@@ -1,0 +1,14 @@
+{
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:4": {
+      "version": "4.0.0",
+      "resolved": "ghcr.io/devcontainers/features/docker-in-docker@sha256:4fa87399214366e320d489991769c4f3f461e1ffe461f54eea78a41b34945bb5",
+      "integrity": "sha256:4fa87399214366e320d489991769c4f3f461e1ffe461f54eea78a41b34945bb5"
+    },
+    "ghcr.io/mpriscella/features/kind:1": {
+      "version": "1.0.1",
+      "resolved": "ghcr.io/mpriscella/features/kind@sha256:103487a6bd74424f2285b6f9594f0a8bbb31d0544eb3563b64e40bc303e0d83e",
+      "integrity": "sha256:103487a6bd74424f2285b6f9594f0a8bbb31d0544eb3563b64e40bc303e0d83e"
+    }
+  }
+}
