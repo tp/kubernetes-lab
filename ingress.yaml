@@ -13,11 +13,11 @@ spec:
           service:
             name: service-b
             port:
-              number: 80
+              name: http
       - path: /a
         pathType: Exact
         backend:
           service:
             name: service-a
             port:
-              number: 80
+              name: http
