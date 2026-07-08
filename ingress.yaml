@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Exact # exact here, since we would want 404 for any other paths anyway
+        backend:
+          service:
+            name: service-b
+            port:
+              number: 80
