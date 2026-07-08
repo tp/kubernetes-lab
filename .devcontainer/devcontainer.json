@@ -3,18 +3,26 @@
 {
 	"name": "Ubuntu",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:resolute",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+	// "initializeCommand": "docker network inspect kind >/dev/null 2>&1 || docker network create kind",
+	// "runArgs": [
+	// 	"--network=kind"
+	// ],
 	"features": {
+		// "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+		// 	"installDockerBuildx": true,
+		// 	"dockerDashComposeVersion": "none"
+		// },
 		"ghcr.io/devcontainers/features/docker-in-docker:4": {
-			"moby": false,
-			"azureDnsAutoDetection": true,
+			"moby": true,
 			"installDockerBuildx": true,
-			"iptablesSwitchAtRuntime": true,
-			"version": "latest",
 			"dockerDashComposeVersion": "none"
 		},
 		"ghcr.io/mpriscella/features/kind:1": {
-			"version": "latest"
+			"version": "v0.32.0"
+		},
+		"ghcr.io/devcontainers-extra/features/kubectl-asdf:2": {
+			"version": "1.36.2"
 		}
 	},
 	"customizations": {
@@ -23,7 +31,14 @@
 				"ms-kubernetes-tools.vscode-kubernetes-tools"
 			]
 		}
-	}
+	},
+	// "containerEnv": {
+	// 	"KIND_EXPERIMENTAL_PROVIDER": "docker"
+	// },
+	"mounts": [
+		"source=kubernetes-lab-kube,target=/home/vscode/.kube,type=volume"
+	],
+	"postCreateCommand": "sudo mkdir -p /home/vscode/.kube && sudo chown -R vscode:vscode /home/vscode/.kube"
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
