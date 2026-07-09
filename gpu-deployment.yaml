@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-gpu
+  labels:
+    app: service-gpu
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: service-gpu
+  template:
+    metadata: 
+      labels:
+        app: service-gpu
+    spec:
+      containers:
+      - name: service-gpu
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+          name: http
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+      tolerations:
+        - key: "nvidia.com/gpu"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
