@@ -17,10 +17,15 @@ spec:
       openAPIV3Schema:
         type: object
         required:
-        - message
+        - spec
         properties:
-          message:
-            type: string
+          spec:
+            type: object
+            required:
+            - message
+            properties:
+              message:
+                type: string
 
 ---
 
@@ -28,4 +33,5 @@ apiVersion: lab.timm.preetz.xyz/v1
 kind: Greeting
 metadata:
   name: greeting
-message: Hello Timm!
+spec:
+  message: Hello Timm!
