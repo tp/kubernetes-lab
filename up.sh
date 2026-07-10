@@ -11,6 +11,10 @@ if kind get clusters --quiet | grep -Fxq -- "$CLUSTER_NAME"; then
   exit 0
 fi
 
+# TODO: Metrics server + kind fix
+# kubectl -n kube-system patch deployment metrics-server --type=json \
+#   -p='[{"op":"add","path":"/spec/template/spec/containers/0/args/-","value":"--kubelet-insecure-tls"}]'
+
 kind create cluster --name "$CLUSTER_NAME" --config kind-config.yaml
 
 kubectl apply -f calico.yaml
